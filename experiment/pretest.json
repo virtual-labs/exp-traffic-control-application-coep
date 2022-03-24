@@ -2,37 +2,63 @@
   "version": 2.0,
   "questions": [
     {
-      "question": "This is a Sample Question 1?",
+      "question": "OFFD stands for",
       "answers": {
-        "a": "answer1",
-        "b": "answer2",
-        "c": "answer3",
-        "d": "answer4"
+        "a": "OFF delay timer",
+        "b": "OFF discrete Output",
+        "c": "OFF discrete input",
+		"d": "None of these"
       },
-      "explanations": {
-        "a": "Explanation 1  <a href='www.google.com'>here</a>",
-        "b": "Explanation 2",
-        "c": "Explanation 2",
-        "d": "Explanation 2"
-      },
+     
       "correctAnswer": "a",
       "difficulty": "beginner"
     },
     {
-      "question": "This is a Sample Question 2?",
+      "question": "PIN stands for",
       "answers": {
-        "a": "answer1",
-        "b": "answer2",
-        "c": "answer3",
-        "d": "answer4"
+        "a": "Peak Input",
+        "b": "Pulse Output",
+        "c": "Pulse Input",
+		"d": "Peak Output"
       },
-      "explanations": {
-        "a": "Explanation 1  <a href='www.google.com'>here</a>",
-        "b": "Explanation 2",
-        "c": "Explanation 2",
-        "d": "Explanation 2"
-      },
+     
       "correctAnswer": "c",
+      "difficulty": "beginner"
+    },
+    {
+      "question": " The NOT block is available under ------ library",
+      "answers": {
+        "a": "Math",
+        "b": "IO",
+        "c": "Logical",
+		"d": "None of these"
+      },
+      
+      "correctAnswer": "c",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "In retentive timer, what happens in case of input/ supply failure?",
+      "answers": {
+        "a": "The accumulated value goes back to zero",
+        "b": "The accumulated value is retained",
+        "c": " Can't predict the status of accumulator",
+		"d": "None of these"
+      },
+      
+      "correctAnswer": "b",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "Traffic Control is example of -------- control system.",
+      "answers": {
+        "a": "Open loop",
+        "b": "Cascade",
+        "c": "Closed loop",
+		"d": "None of these"
+      },
+      
+      "correctAnswer": "a",
       "difficulty": "beginner"
     }
   ]

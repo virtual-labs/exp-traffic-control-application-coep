@@ -2,38 +2,65 @@
   "version": 2.0,
   "questions": [
     {
-      "question": "This is a Sample Question 1?",
+      "question": "In the solution provided Pulse input (PIN) function block is used to",
       "answers": {
-        "a": "answer1",
-        "b": "answer2",
-        "c": "answer3",
-        "d": "answer4"
+        "a": "Hold the process",
+        "b": "Start the process",
+        "c": "Stop the process",
+		"d": "resets on power failure"
       },
-      "explanations": {
-        "a": "Explanation 1  <a href='www.google.com'>here</a>",
-        "b": "Explanation 2",
-        "c": "Explanation 2",
-        "d": "Explanation 2"
-      },
-      "correctAnswer": "a",
+     
+      "correctAnswer": "d",
       "difficulty": "beginner"
     },
     {
-      "question": "This is a Sample Question 2?",
+      "question": "For keeping green light ON ---- input AND gate is used",
       "answers": {
-        "a": "answer1",
-        "b": "answer2",
-        "c": "answer3",
-        "d": "answer4"
+        "a": "Two",
+        "b": "Three",
+        "c": "Four",
+		"d": "One"
       },
-      "explanations": {
-        "a": "Explanation 1  <a href='www.google.com'>here</a>",
-        "b": "Explanation 2",
-        "c": "Explanation 2",
-        "d": "Explanation 2"
+      
+      "correctAnswer": "b",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "The inverted output is available with",
+      "answers": {
+        "a": "PIN function block",
+        "b": "Negate function block",
+        "c": "NOT function block",
+		"d": "None of these"
       },
+     
       "correctAnswer": "c",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "The total duration for which the red light is kept on is --------",
+      "answers": {
+        "a": "5 sec",
+        "b": "25 sec",
+        "c": "15 sec",
+		"d": "30 sec"
+      },
+      
+      "correctAnswer": "d",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "For stopping the sequence, simulate input to the PIN block is",
+      "answers": {
+        "a": "Made '0'",
+        "b": "To be disabled",
+        "c": "Made '1'",
+		"d": "None of these"
+      },
+      
+      "correctAnswer": "a",
       "difficulty": "beginner"
     }
   ]
 }
+

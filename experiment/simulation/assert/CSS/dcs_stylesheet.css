@@ -1,0 +1,191 @@
+* {
+	padding: 0px;
+	margin: 0px;
+}
+.logo{
+	color: #4682B4;
+    font-family: Georgia;
+    font-size: 44px;
+    font-style: inherit;
+    font-weight: bold;
+    margin: -12px 53px 19px;
+    position: absolute;
+    top: 23px;
+    width: 100%;
+}
+.exp-label{
+	position: absolute;
+	color:#4682B4;
+    font-family: Georgia;
+    font-size: 35px;
+    font-style: inherit;
+    font-weight: bold;
+    margin: 24px 330px 19px;    
+}
+#tabs {
+	position: relative;
+	border: 2px solid;
+	background-color: white;
+	overflow-y: auto;
+	margin-top:0px;
+	float:right;
+	right: 0;
+	width: 84%;
+	height: 625px;
+	z-index: 1;
+}
+#maincanvasdiv {
+	position: relative;
+	border: 1px solid gray;
+	background-image:url('../images/bgl.gif') repeat;
+}
+div hr{
+margin: 3px -55px 19px;
+}
+#sidediv {
+	float:left;
+	border: 2px solid;
+	height: auto;
+	width: 200px;
+}
+#wrap{
+	height: 619px;
+	width: 230px;
+	float:left;
+	position:absolute;
+	margin-top:140px;
+}
+.innerdiv {
+	position: absolute;
+	background-color: #8396db;
+	border: 1px solid gray;
+}
+#information {
+	position: relative;
+	border: 2px solid;
+	width: 198px;
+	height: 277px;
+	float:left;
+	overflow: auto;
+}
+.infoblock {
+	height: 230px;
+}
+.btn {
+	width: 50px;
+	height: 30px;
+	background-color: #0c337c;
+	border: 1px solid white;
+	color: white;
+	font-weight: bold;
+	border-radius: 5px;
+	z-index: 100;
+	box-shadow: 2px 2px 2px 0 #000000;
+}
+
+button:disabled{
+
+	background-color: grey;
+	box-shadow: 0px 0px 0px 0px;
+	width: 92px;
+	height: 32px;
+	cursor : default;
+	
+}
+
+button{
+
+width: 90px;
+	height: 30px;
+	background-color: #0c337c;
+	border: 1px solid white;
+	color: white;
+	font-weight: bold;
+	border-radius: 5px;
+	z-index: 100;
+	box-shadow: 2px 2px 2px 0 #000000;
+	cursor : pointer;
+}
+.cpt-ul-config{
+	 height: 28px;
+    margin: -12px -17px;
+    width: 371px;
+}
+.expression{
+	margin-top:-29px;
+	margin-left:-24px
+}
+.general{
+	margin-top:-29px;
+	margin-left:-24px
+}
+.divcss {
+	background-color: white;
+	z-index: 20;
+	position: absolute;
+	border-radius: 5px;
+}
+
+#PIDConfig{
+	display: none;
+	font-size:12px;
+}
+
+.tblcontent{
+	font-size:12px;
+	width:100%;
+}
+
+.tdcontent{
+	font-weight:bold;
+	width:159px;
+}
+
+#EditDiv{
+	display: none;
+	font-size:12px;
+}
+.eventoninput{
+	
+}
+textarea {
+    resize: none;
+    overflow: auto;
+    font-size: 16px;
+}
+.propertyTitle{
+	background-image:url('../images/title.jpeg');
+	height:10%;
+	font-weight:bold;
+	font-family:Lucida Grande;
+}
+.propertyLabels{
+	font-weight:bold;
+	font-family:Lucida Grande;
+	font-size:medium;
+}
+.PropertyLabelValues{
+	font-weight:normal;
+	font-family:Lucida Grande;
+	font-size:medium;
+	cursor :pointer;
+}
+#tabs li .ui-icon-close {
+	 float: left; 
+	 margin: 0.4em 0.2em 0 0; 
+	 cursor: pointer;
+}
+#add_tab { 
+	cursor: pointer; 
+}
+#lblerror{
+	color:red;
+	display : none;
+}
+.legend{
+	color:red;
+}
+#controlbtn {
+	float:left;
+    margin: 139px 220px 8px;
+}
