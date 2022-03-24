@@ -1,13 +1,676 @@
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-	<!-- Add CSS at the head of HTML file -->
-    <link rel="stylesheet" href="./css/main.css">
-</head>
-<body>
-		<!-- Your code goes here-->
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>DCS Lab</title>
+<link type="text/css" href="assert/CSS/jquery-ui.css" rel="stylesheet" />
+<link type="text/css" href="assert/CSS/dcs_stylesheet.css" rel="stylesheet" />
+<link type="text/css" href="assert/CSS/HtmlElement.css" rel="stylesheet" />
+<link type="text/css" href="assert/CSS/jqx.base.css" rel="stylesheet" />
+<!--<script type="text/javascript" data-main="main.js" src="assert/lib/require.js"></script>-->
 
-	<!-- Add JS at the bottom of HTML file --> 
-        <script src="./js/main.js"></script>
+		<script type="text/javascript" src="assert/lib/jquery.min.js"></script>
+		<script type="text/javascript" src="assert/lib/jquery-ui-1.8.16.custom.min.js"></script>
+		<script type="text/javascript" src="assert/lib/backbone.js"></script>
+		<script type="text/javascript" src="assert/lib/draw2d.js"></script>
+		<script type="text/javascript" src="assert/lib/wz_jsgraphics.js"></script>
+		<script type="text/javascript" src="assert/lib/jqxcore.js"></script>
+		<script type="text/javascript" src="assert/lib/jqxmenu.js"></script>
+		<script type="text/javascript" src="assert/lib/jqxtabs.js"></script>
+		
+		<script type="text/javascript" src="bootstrap.js"></script>	
+		<script type="text/javascript" src="src/util/nodefigure.js"></script>
+		<script type="text/javascript" src="src/util/inputport.js"></script>
+		<script type="text/javascript" src="src/util/outputport.js"></script>
+		<script type="text/javascript" src="src/util/nodeconnection.js"></script>
+		<script type="text/javascript" src="src/util/buttondelete.js"></script>
+		<script type="text/javascript" src="src/util/undoredo.js"></script>
+		<script type="text/javascript" src="src/util/toolbox.js"></script>
+		<script type="text/javascript" src="src/util/OpenXML.js"></script>
+		<script type="text/javascript" src="src/util/saveJSON.js"></script>
+		<script type="text/javascript" src="src/util/commandChangeSequenceNo.js"></script>	
+		<script type="text/javascript" src="src/util/JSONReader.js"></script>
+		<script type="text/javascript" src="src/util/JSONWriter.js"></script>
+		<script type="text/javascript" src="src/util/SaveAndOpenJsonObject.js"></script>
+		<script type="text/javascript" src="src/util/ScanCycle.js"></script>
+		<script type="text/javascript" src="src/util/functionBlockExecutor.js"></script>
+		<script type="text/javascript" src="src/util/parseJsonAtCompileTime.js"></script>
+		<script type="text/javascript" src="src/util/ScanCycle.js"></script>
+		<script type="text/javascript" src="src/util/workflow.js"></script>	
+		<script src="src/util/dwrScript.js"></script>
+		<script src="src/util/valueUpdator.js"></script>
+</head>
+<body oncontextmenu="return false;">
+	<div id="maincanvasdiv">
+		<div class = "logo">
+		<img src="assert/images/coep_logo.png" style="margin-left:-1057px height:112px;"/>
+		 <span class="exp-label">Distributed Control System</span>
+		 <hr/>
+		</div>
+		
+		<div id="wrap">
+			<div id="sidediv">
+				<h3><a href="#">I/O</a></h3>
+				<div class="innerdiv">
+					<table width="100%" border="0" style="vertical-align: top">
+						<tr>
+							<td align="center" height="50px">
+							<div id="AI" class="btn">
+								<label>AI</label>
+							</div></td>
+							<td align="center"  height="50px">
+							<div id="AO" class="btn">
+								<label>AO</label>
+							</div></td>
+						</tr>
+						<tr>
+							<td align="center" height="50px">
+							<div id="DI" class="btn">
+								<label>DI</label>
+							</div></td>
+							<td align="center"  height="50px">
+							<div id="DO" class="btn" >
+								<label>DO</label>
+							</div></td>
+						</tr>
+					</table>
+				</div>
+				<h3 style="display: none;"><a href="#">Control</a></h3>
+				<div class="innerdiv" style="display: none;">
+					<table width="100%" border="0" style="vertical-align: top">
+						<tr>
+							<td align="center" height="50px">
+							<div id="PID" class="btn">
+								<label>PID</label>
+							</div>
+						</td>
+						<td align="center" height="50px">
+							
+						</td>
+					</tr>
+					<tr>
+						<td align="center" height="50px">
+							
+						</td>
+						<td align="center" height="50px">
+							
+						</td>
+					</tr>
+				</table>
+			</div>
+			<h3 style="display: none;"><a href="#">Math Operation</a></h3>
+			<div class="innerdiv" style="display: none;">
+				<table width="100%" border="0" style="vertical-align: top">
+					<tr>
+						<td align="center" height="50px">
+							<div id="ADD" class="btn">
+								<label>ADD</label>
+							</div>
+						</td>
+						<td align="center" height="50px">
+							<div id="SUB" class="btn">
+								<label>SUB</label>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td align="center" height="50px">
+							<div id="MUL" class="btn">
+								<label>MUL</label>
+							</div>
+						</td>
+						<td align="center" height="50px">
+							<div id="DIV" class="btn">
+								<label>DIV</label>
+							</div>
+						</td>
+					</tr>
+				</table>
+			</div>
+			<h3>
+				<a href="#">Timers</a>
+			</h3>
+			<div class="innerdiv" style="display: none">
+				<table width="100%" border="0" style="vertical-align: top">
+					<tr>
+						<td align="center" height="50px">
+							<div id="OND" class="btn">
+								<label>TON</label>
+							</div>
+						</td>
+						<td align="center" height="50px">
+							<div id="OFFD" class="btn">
+								<label>TOFF</label>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td align="center" height="50px">
+							<div id="RTO" class="btn">
+								<label>RTO</label>
+							</div>
+						</td>
+						<td align="center" height="50px">
+							<div id="RESET" class="btn">
+								<label>RESET</label>
+							</div>
+						</td>
+						
+					</tr>
+				</table>
+			</div>
+			<h3>
+				<a href="#">Logic Operators</a>
+			</h3>
+			<div class="innerdiv">
+				<table width="100%" border="0" style="vertical-align: top">
+					<tr>
+						<td align="center" height="50px">
+							<div id="AND" class="btn">
+								<label>AND</label>
+							</div>
+						</td>
+						<td align="center" height="50px">
+							<div id="OR" class="btn">
+								<label>OR</label>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td align="center" height="50px">
+							<div id="NOT" class="btn">
+								<label>NOT</label>
+							</div>
+						</td>
+						<td align="center" height="50px">
+							
+						</td>
+					</tr>
+				</table>
+			</div>
+			<h3>
+				<a href="#">Counter</a>
+			</h3>
+			<div class="innerdiv" style="display: none">
+				<table width="100%" border="0" style="vertical-align: top">
+					<tr>
+						<td align="center" height="50px">
+							<div id="UPCTR" class="btn">
+								<label>Up</label>
+							</div>
+						</td>
+						<td align="center" height="50px">
+							<div id="DWCTR" class="btn">
+								<label>Down</label>
+							</div></td>
+						</tr>
+						<tr>
+							<td align="center" height="50px">
+							<div id="RESET" class="btn">
+								<label>RESET</label>
+							</div>
+						</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+			<div id="information">
+			</div>
+			</div>
+			<div id='jqxMenu' style = "height: 40px;">
+         	 <ul>
+           	 	<li id="disablemenu">Disable tab</li> 
+           	 	<li style="display: none" id="enablemenu">Enable tab</li>
+          	</ul> 
+     	 </div>
+		 <div id="controlbtn">
+		<button id="btnCompile" value="Compile" >Compile</button> &nbsp;
+		<button id="btnRunmode" value="OffMode" disabled="true">Run</button> &nbsp;
+		<button id="btnStop" value="CompileMode" disabled="true">Stop</button> &nbsp;
+		<button id="btnClear" value="Clear">Clear</button>
+		</div>
+		 
+			<div id="tabs">
+				<ul>
+					<li id="area0" class="litag"><a href="#Area-0">Area 0</a></li>
+				</ul>
+				<div id="Area-0" style="height: 100%;"></div>
+			</div>
+		</div>
+		<div id="PIDConfig">
+			<table  class="tblcontent" border="0" cellspacing="8" cellpadding="5">
+				<tr>
+					<td colspan="2">
+						<label id="lblerror" value=""></label>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						<input type="hidden" id="lblPIDlabel"/>
+					</td>
+				</tr>
+				<tr>
+					<td class="tdcontent"> Enter Description: </td>
+					<td>
+						<input type="text" id="lblDescription" name="lblDescription" style="width: 120px; float: left; margin-left:0px;" placeholder="Enter Description" />
+					</td>
+				</tr>
+				<tr>
+					<td class="tdcontent"> Mode Type: </td>
+					<td>
+					<select id="selModeType" style="width:120px">
+						<option value="select" SELECTED>---Select---</option>
+						<option value="Auto"> Auto </option>
+						<option value="Manual"> Manual</option>
+					</select></td>
+				</tr>
+				<tr>
+					<td colspan="2" align="center">
+					<div id="actionconfig">
+						<div id="actiontype" style="display: none">
+							<table class="tblcontent" cellspacing="8" cellpadding="5">
+								<tr>
+									<td class="tdcontent"><label for="actiontype" style="float:left; margin-left:-9px; ">Action Type:</label></td>
+									<td>
+										<select id="ddlActiontype" style="width:120px; float: left; margin-left:-7px;">
+											<option value="select">---Select---</option>
+											<option value="direct">direct</option>
+											<option value="reverse">Reverse</option>
+										</select>
+									</td>
+								</tr>
+							</table>
+						</div>
+						<div id = "controlType" style="display: none">
+							<table class="tblcontent" cellspacing="8" cellpadding="5" >
+								<tr>
+									<td class="tdcontent">
+										<label style="float:left; margin-left:-9px;">Controller Type:</label>
+									<td>
+									<td>
+									<select id ="controlIDType" style="width: 120px; float: left; margin-left:-15px;">
+										<option value = "select" SELECTED >---Select---</option>
+										<option value = "P" >P</option>
+										<option value = "PI" >P+I</option>
+										<option value = "PD" >P+D</option>
+										<option value = "PID" >P+I+D</option>
+									</select></td>
+								</tr>
+							</table>
+						</div>
+						<div id = "typeconfig" style="display: none">
+								<table class="tblcontent" cellpadding="5" cellspacing="8">
+								<tr>
+									<td class="tdcontent"><label for ="typeconf" style="float:left; margin-left:-9px;">PID Type</label></td>
+									<td>
+										
+										<select id ="ddlPIDtype" style="width: 120px; float: left; margin-left:-6px;">
+											<option value = "select" SELECTED >---Select---</option>
+											<option value = "interacting" >Interacting</option>
+											<option value = "non-interacting" >Parallel</option>
+										</select>
+									</td>
+								</tr>
+							</table>
+						</div>
+						<div id="required" style="display: none">
+								<table class="tblcontent" cellspacing="8" cellpadding="5">
+									<tr>
+										<td class="tdcontent"><label for ="requiredInput" style="float:left; margin-left:-9px;"> Set Point Value: </label></td>
+										<td>
+										<input type="text" id="setPoint" name="setPoint" value="30" maxlength="3" style="width: 120px; float: left; margin-left:-6px;" class="eventoninput"/>
+										<label for="setPoint">&nbsp;(0-100)%</label></td>
+									</tr>
+									<tr>
+										<td class="tdcontent"><label for ="maxValuerow" style="float:left; margin-left:-9px;"> Max Value:</label></td>
+										<td>
+										<input type="text" id="maxvalue" name="maxvalue" maxlength="3" value="50" style="width: 120px; float: left; margin-left:-6px;" class="eventoninput"/>
+										<label for="maxvalue">&nbsp;(0-100)%</label></td>
+									</tr>
+									<tr>
+										<td class="tdcontent"><label for = "minValuerow" style="float:left; margin-left:-9px;"> Min Value:</label></td>
+										<td>
+										<input type="text" id="minvalue" name="propgain" value="10" maxlength="3" style="width: 120px; float: left; margin-left:-6px;" class="eventoninput"/>
+										<label for="propgain">&nbsp;(0-100)%</label></td>
+									</tr>
+									<tr>
+										<td class="tdcontent"><label for "propgain" style="float:left; margin-left:-9px;"> Proportional Gain (Kp): </label></td>
+										<td>
+										<input type="text" id="propgain" name="propgain" value="0.1" maxlength="5" style="width: 120px; float: left; margin-left:-6px;" class="eventoninput"/>
+										<label for="propgain">&nbsp;(0.01-100)%/%</label></td>
+									</tr>
+								</table>
+							</div>
+						<div id="propbaise" style="display: none">
+							<table class="tblcontent" cellspacing="8" cellpadding="5">
+								<tr>
+									<td class="tdcontent">
+										<label for = "propbaise" style="float:left; margin-left:-9px;"> Proportional Bias (P0): </label>
+									</td>
+									<td>
+										<input type="text" id="propbaiseValue" name="propbaiseValue" value="50" maxlength="3" style="width: 120px; float: left; margin-left:-6px;" class="eventoninput"/>
+										<label for="propbaiseValue">&nbsp;(0-100)%</label>
+									</td>
+								</tr>
+							</table>							
+						</div>	
+						<div id="derivativeGain" style="display: none">
+								<table class="tblcontent" cellspacing="8" cellpadding="5">
+									<tr>
+										<td class="tdcontent"><label for ="derivativeGain" style="float:left; margin-left:-9px;"> Derivative Gain (Kd): </label></td>
+										<td>
+										<input type = "text" id = "derivativeGainValue" name = "derivativeGainValue" value="5" maxlength="2" style="width: 120px; float: left; margin-left:-6px;" class="eventoninput"/>
+										<label for="derivativeGainValue">&nbsp;(0-60)sec</label></td>
+									</tr>
+								</table>
+							</div>
+						<div id="piValue" style="display: none">
+									<table class="tblcontent" cellspacing="6">
+										<tr>
+											<td>
+											<div id="controllerOutput">
+												<table class="tblcontent">
+													<tr>
+														<td class="tdcontent" align="left"><label for = "controllerOutput" style="float:left; margin-left:-9px;"> Initial Controller Output:</label></td>
+														<td>
+														<input type="text" id="controllerValue" name="controllerValue" value="50" maxlength="2" style="width: 120px; float: left; margin-left:0px;" class="eventoninput"/>
+														<label for="controllerValue">&nbsp;(40-60)%</label></td>
+													</tr>
+												</table>
+											</div>
+											</td>
+										</tr>
+										<tr>
+											<td>
+											<div id="intergalGain">
+												<table class="tblcontent">
+													<tr>
+														<td class="tdcontent"><label for ="intergalGain" style="float:left; margin-left:-9px;"> Integral Gain (Ki): </label></td>
+														<td>
+														<input type="text" id="intergalGainValue" name="intergalGainValue" value="0.5" maxlength="5" style="width: 120px; float: left; margin-left:0px;" class="eventoninput"/>
+														<label for="intergalGainValue">&nbsp;(0.001-100)%</label></td>
+													</tr>
+												</table>
+											</div></td>
+										</tr>
+									</table>
+								</div>
+						<div id="rate" style="display: none">
+										<table class="tblcontent" cellspacing="8" cellpadding="5">
+											<tr>
+												<td class="tdcontent" align="left"><label for ="rate" style="float:left; margin-left:-9px;">Scan Time:</label></td>
+												<td>
+												<input type="text" id="rateValue" name = "rateValue" value="3" maxlength="1" style="width: 120px; float: left; margin-left:-8px;" class="eventoninput"/>
+												<label for ="rateValue">&nbsp;(0-5)sec</label></td>
+											</tr>
+										</table>
+									</div>
+					</div>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						<div id="manualvalue" style="display: none;">
+							<table class="tblcontent" border="0" cellspacing="8" cellpadding="8">
+								<tr>
+									<td class="tdcontent"><label for ="Manualvalue" style="float:left; margin-left:-9px;"> Enter Value: </label></td>
+							<td>
+								<input type="text" id="txtmanualvalue" name="txtmanualvalue" value="" maxlength="3" style="width: 120px; margin-left: -8px;" class="eventoninput"/>
+							</td>
+								</tr>
+							</table>
+						</div>
+					</td>
+				</tr>
+			</table> </div>
+		<div id="Functionalblocktag" style="display: none;">
+			<table class="tblcontent" border="0" cellspacing="8" cellpadding="8">
+				<tr>
+					<td nowrap="nowrap"><label>Select Tag Name:<font color="red">*</font></label></td>
+					<td>
+						<select id="ddltagname" style="width:120px">
+							<option value="select" SELECTED>---Select---</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td nowrap="nowrap"><label>Mapping Address:</label></td>
+					<td>
+						<input type="text" id="txtMappingAddress" style="width:120px" readonly="readonly" placeholder="Auto Generated"/>
+					</td>
+				</tr>
+				<tr>
+					<td nowrap="nowrap"><label> Enter Description: </label></td>
+					<td>
+						<input type="text" id="lblDesc" name="lblDescription" style="width: 120px; float: left; margin-left:0px;" placeholder="Enter Description" />
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						<input type="hidden" id="txtlabel" />
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2" style="color:red; font-size:10px;">
+						<fieldset>
+							<legend><b>Note</b></legend><br />
+							  1)Space is not allowed in label. <br />
+							  2)* mark fields are compulsary. <br /> <br />
+						</fieldset>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<div id="EditDiv">
+			<table class="tblcontent" style="margin-top:16px;">
+				<tr>
+					<td>
+						Enter Value:
+					</td>
+					<td>
+						<input type="text" id="txtvalue" style="width:100px;" class="eventoninput" placeholder="Enter value"/>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<div id="TimerConfig" style="display: none">
+			<table class="tblcontent" cellpadding="5" cellspacing="5">
+				<tr>
+					<td colspan="2">
+						<input type="hidden"  id="txtTimerCounterlbl" />
+					</td>
+				</tr>
+				<tr>
+					<td nowrap="nowrap"><label> Enter Description: </label></td>
+					<td>
+						<input type="text" id="lblTimerDesc" name="TimerDescription" style="width: 120px; float: left; margin-left:0px;" placeholder="Enter Description" />
+					</td>
+				</tr>
+				<tr>
+					<td>
+						Enter Preset Value:<font color="red">*</font>
+					</td>
+					<td>
+						<input type="text" id="txtpreset" style="width:120px;" class="eventoninput" placeholder="Preset value" />
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2" style="color:red; font-size:10px;">
+						<fieldset id="CPTavlSourecs">
+							<legend><b>Note</b></legend><br>
+							  1)Space is not allowed in label. <br />
+							  2)* mark fields are compulsary. <br /> <br />
+
+						</fieldset>
+					</td>
+				</tr>
+			</table>
+		</div> 
+		<div id="CPTConfig" style="display: none">
+			<table class="tblcontent" cellspacing="8" cellpadding="8">
+				<tr>
+					<td valign="top">
+						<ul class="cpt-ul-config">
+							<li><a href="#general">General</a></li>
+							<li><a href="#expression">Experssion</a></li>
+						</ul>
+					</td>
+				</tr>
+			</table>
+			<div id="expression" class="expression">
+				<table class="tblcontent" border="0" cellspacing="8" cellpadding="8">
+				<tr>
+					<td style="width:40%"><label>Select Statement:</label></td>
+					<td>
+						<select id="ddlStatement" style="width:184px">
+							<option value="select" SELECTED>---Select---</option>
+							<option value="if">if</option>
+							<option value="if-else">if-else</option>
+							<option value="while">while</option>
+							<option value="do-while">do-while</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td style="width:80px"><label>Enter Condition:</label></td>
+					<td>
+						<input type="text" id="txtCondition" style="width:184px;" class="nospace" placeholder="Enter Condition"/>
+					</td>
+				</tr>
+				<tr>
+					<td style="width:80px"><label>Enter Experssion1:</label></td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						<textarea id="txrExperssion1" cols="48" rows="2" title="Experssion1" class="nospace" placeholder="Enter Expression1;"></textarea>
+					</td>
+				</tr>
+				<tr id="trexperssion2">
+					<td style="width:80px"><label style="display: none;" id="lblexperssion2"> Experssion2:</label></td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						<textarea id="txrExperssion2" style="display: none;" cols="48" rows="2" title="Experssion2" class="nospace" placeholder="Enter Expression2;"></textarea>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						<!--<textarea id="txrExperssion" cols="48" rows="5" title="Experssion"></textarea>-->
+						<fieldset>
+							<legend><b>Statement View</b></legend><br />
+							<div id="statementview" style="overflow: auto;">
+								<!--<label id="lblstatementview" ></label>-->
+							</div>
+						</fieldset>
+
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2" style="color:red;font-size: 10px; width: 100%">
+						<fieldset>
+							<legend><b>Note:</b></legend><br />
+							1) Put semicolon(;) at the end of each statement.<br /><br />
+							2) Used functional block label as variable.<br /><br />
+						</fieldset>
+					</td>
+				</tr>
+			</table>
+			</div>
+			<div id="general" class="general">
+				<table class="tblcontent" border="0" cellspacing="8" cellpadding="8">
+				<tr>
+					<td colspan="2">
+						<input type="hidden" id="txtCPTlabel" />
+					</td>
+				</tr>
+				<tr>
+					<td nowrap="nowrap"><label> Enter Description: </label></td>
+					<td>
+						<input type="text" id="lblCPTDesc" name="CPTDescription" style="width: 120px; float: left; margin-left:0px;" placeholder="Enter Description" />
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						<fieldset id="CPTavlSourecs">
+							<legend><b>Available Sources:</b></legend><br />
+							<label id="lblavlsrc"></label><br />
+						</fieldset>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2" style="color:red; font-size: 10px;">
+						<fieldset id="CPTavlSourecs">
+							<legend><b>Note</b></legend><br />
+							1)Space is not allowed in label. <br />
+							2)* mark fields are compulsary. <br /> <br />
+						</fieldset>
+					</td>
+				</tr>
+				</table>
+			</div>
+		</div>
+		<div id="labeldiv" style="display: none">
+			<table class="tblcontent" border="0" cellspacing="8" cellpadding="8">
+				<tr>
+					<td colspan="2">
+						<input type="hidden" id="txtlbl" />
+					</td>
+				</tr>
+				<tr>
+					<td nowrap="nowrap"><label> Enter Description: </label></td>
+					<td>
+						<input type="text" id="lblFBDesc" name="FBDescription" style="width: 120px; float: left; margin-left:0px;" placeholder="Enter Description" />
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2" style="color:red; font-size: 10px;">
+						<fieldset id="CPTavlSourecs">
+							<legend><b>Note</b></legend><br>
+							  1)Space is not allowed in label. <br />
+							  2)* mark fields are compulsary. <br /> <br />
+						</fieldset>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<div id="SequenceNo" style="display: none">
+			<table class="tblcontent" style="margin-top:16px;">
+				<tr>
+					<td style="width:50%">
+						Sequence No:
+					</td>
+					<td>
+						<input type="text" id="txtSequenceNo" style="width:50px;" class="eventoninput" />
+					</td>
+				</tr>
+			</table>
+		</div>
+		<div id="resetdiv" style="display: none">
+		<table class="tblcontent" border="0" cellspacing="8" cellpadding="8">
+			<tr>
+				<td colspan="2"><input type="hidden" id="txtRstlbl" /></td>
+			</tr>
+			<tr>
+				<td nowrap="nowrap"><label> Select Counter: </label></td>
+				<td><select id="ddlrstSelectCounterName" style="width: 120px"></select>
+				</td>
+			</tr>
+			<tr>
+				<td nowrap="nowrap"><label> Enter Description: </label></td>
+				<td><input type="text" id="lblRstDesc" name="RstDescription"
+					style="width: 120px; float: left; margin-left: 0px;"
+					placeholder="Enter Description" /></td>
+			</tr>
+		</table>
+	</div>
+		<input type="text" id="UpdateBlockValueinDiv" style="display: none;" />
+		<div id="delete-confirm" style="font-size:12px; display: none;"></div>
+		<div id="alertbox" style="font-size: 12px; display: none;"></div>
+	
+	<script type="text/javascript" src="assert/lib/backbone.js"></script>
+	<script type="text/javascript" src="src/views/view.js"></script>
+	<script type="text/javascript" src="src/Model/Model.js"></script>
+	<script type="text/javascript" src="src/Collection/Collection.js"></script>
+
 </body>
 </html>
