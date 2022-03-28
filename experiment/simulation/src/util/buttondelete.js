@@ -10,7 +10,7 @@ draw2d.ButtonDelete = function(calledobj) {
 };
 draw2d.ButtonDelete.prototype = new draw2d.Button();
 draw2d.ButtonDelete.prototype.type = "ButtonDelete";
-draw2d.ButtonDelete.prototype.url = "../assert/images/ButtonDelete";
+draw2d.ButtonDelete.prototype.url = "assert/images/ButtonDelete";
 draw2d.ButtonDelete.prototype.execute = function() {
 	if($("#btnRunmode").val() == "OffMode") {
 		var id = this.palette.workflow.currentSelection.getheader() + "-" + this.palette.workflow.currentSelection.getSequenceNo();
