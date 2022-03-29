@@ -1585,7 +1585,7 @@
 					});
 					for(var i = 0; i < DCSSPACE.collection.length; i++) {
 						var ws = DCSSPACE.collection.at(i).get("workflow");
-						ws.setBackgroundImage("/DCSFrontend/DCSEditor/assert/images/workspaceBackground.jpg", true);
+						ws.setBackgroundImage("assert/images/workspaceBackground.jpg", true);
 						for(var k = 1; k < ws.figures.size; k++) {
 							if(ws.figures.data[k].type == "draw2d.FlowMenu")
 								ws.figures.data[k].html.style.display = "none";
@@ -1671,7 +1671,7 @@
 							DCSSPACE.view.blockView.prototype.blocksetContent(functionBlockCollection[p]);
 						});
 						var ws = DCSSPACE.collection.at(i).get("workflow");
-						ws.setBackgroundImage("/DCS_Draw2d/assert/images/workspaceBackground.jpg", false);
+						ws.setBackgroundImage("assert/images/workspaceBackground.jpg", false);
 						for(var k = 0; k < ws.figures.size; k++) {
 							if(ws.figures.data[k].type == "draw2d.Node" && ws.figures.data[k].outputPort != undefined && ws.figures.data[k].outputPort.connection != undefined){
 								var p = 0;
